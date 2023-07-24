@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/home"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Notes</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content [fullscreen]="true">
+  <div>
+    <ion-textarea  [(ngModel)]="topic"  name="topic" label="Topic" labelPlacement="floating" fill="solid" placeholder="Enter text"></ion-textarea>
+    <br>
+    <ion-textarea [(ngModel)]="description"  name="description"  label="Descreption" labelPlacement="floating" fill="outline" placeholder="Enter text"></ion-textarea>
+    <br>
+    <ion-textarea [(ngModel)]="reference" name="reference" label="Reference" labelPlacement="floating" fill="outline" placeholder="Enter text"></ion-textarea>
+    <br>
+    <ion-datetime-button  datetime="datetime"></ion-datetime-button>
+    <br>
+
+    <ion-button id="pic" (click)="takePhoto()">Take Photo</ion-button>
+    <ion-button id="pic2" color="danger" (click)="deleteSelectedCards()">Delete</ion-button>
+    <br><br>
+    
+
+    <div>
+    <ion-card *ngIf="capturedPhotos.length > 0" (dblclick)="selectTheCard(i)" [class.selected]="isTheCardSelected(i)" (press)="selectCard(i)" [class.selected]="isCardSelected(i)">
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" *ngFor="let photo of capturedPhotos; let i = index">
+              <ion-card id="present-alert" (click)="deleteBase64Photo(i)">
+                <img [src]="photo" alt="Captured Photo">
+              <p>{{ handlerMessage }}</p>
+              <p>{{ roleMessage }}</p>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+    <ion-modal [keepContentsMounted]="true" id="modal">
+      <ng-template id="modal">
+        <ion-datetime  (ionChange)="getDate($event)"  id="datetime"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+    <br>
+    <ion-button (click)="submitOrUpdater20()" expand="block" id="but">Save</ion-button>
+  </div>
+</ion-content>
+
+

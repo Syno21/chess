@@ -1,0 +1,27 @@
+#topic{
+    height:1px;
+}
+
+#descript{
+    height:1px;
+}
+
+#but {
+    position: fixed;
+    bottom: 10px;
+    left: 3px;
+    right: 5px;
+    z-index: 9999;
+  }
+
+  #pic{
+    position: absolute;
+    left: 5px;
+    width: 185px;
+  }
+
+  #pic2{
+    position: absolute;
+    right: 5px;
+    width: 185px;
+  }

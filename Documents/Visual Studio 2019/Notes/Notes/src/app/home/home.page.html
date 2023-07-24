@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title id="iontitle">
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-card>
+    <ion-list>
+      <ion-item *ngFor="let table of tables$ " (click)="onCardClick(table.reference)">
+          {{ table.topic }}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <div>
+    <ion-fab id="fab-container">
+      <ion-fab-button size="small">
+        <ion-icon name="add" (click)="navigateToNewPage()"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </div>
+</ion-content>
